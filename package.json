@@ -1,0 +1,37 @@
+{
+  "name": "physlab",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Free virtual physics lab for grades 7-11: simulations, lab work with least-squares fitting, auto-checked tasks. Works offline.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4173 --strictPort",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "size": "node scripts/check-size.mjs",
+    "check": "npm run typecheck && npm run test && npm run build && npm run size",
+    "e2e": "playwright test",
+    "icons": "node scripts/gen-icons.mjs"
+  },
+  "dependencies": {
+    "preact": "^11.0.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "@preact/preset-vite": "^2.10.6",
+    "@types/node": "^26.6.5",
+    "katex": "^0.19.0",
+    "marked": "^18.1.1",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.4",
+    "vite-plugin-pwa": "^2.0.0",
+    "vitest": "^5.0.4"
+  }
+}

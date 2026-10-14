@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content="Physlab is a free virtual physics lab: interactive experiments, real lab work with measurements and graphs, auto-checked tasks. Works offline." />
+    <meta name="theme-color" content="#161a18" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icons/icon-192.png" />
+    <title>Physlab</title>
+    <script>
+      // Apply the theme before first paint to avoid a flash.
+      (function () {
+        var t = null;
+        try { t = JSON.parse(localStorage.getItem('physlab:v1') || 'null').prefs.theme; } catch (e) {}
+        if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = t;
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <noscript>Physlab needs JavaScript to run the simulations.</noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

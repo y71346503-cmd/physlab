@@ -9,7 +9,7 @@ export function Controls({ ctrl, onShare }: { ctrl: Controller; onShare: () => v
     <div class="controls">
       {dynamic && (
         <>
-          <button type="button" class="btn btn-primary" onClick={() => ctrl.toggle()} aria-label={ctrl.running ? 'Pause' : 'Start'}>
+          <button type="button" class="btn btn-primary" onClick={() => ctrl.toggle()}>
             {ctrl.running ? <IconPause /> : <IconPlay />}
             {ctrl.running ? 'Pause' : ctrl.sim.done ? 'Again' : 'Start'}
           </button>

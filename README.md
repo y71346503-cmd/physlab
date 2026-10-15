@@ -1,5 +1,7 @@
 # Physlab
 
+**Live site:** https://y71346503-cmd.github.io/physlab/
+
 A free virtual physics lab for grades 7–11. Students change parameters, watch the result, take measurements with a stopwatch, ruler, protractor and meters, plot the data, fit a straight line by least squares and find physical constants with an uncertainty, just like in a school lab. Every experiment also has theory and five auto-checked tasks.
 
 Made for schools that lack lab equipment (first of all in Armenia). It is a static website: no accounts, no server, no tracking. After the first visit it works completely offline, also on low-end phones.

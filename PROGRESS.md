@@ -11,7 +11,7 @@
 - [x] 5. Главная, прогресс, «Share» — проверены на всех опытах (e2e)
 - [x] 6. Тесты, Playwright e2e, бюджет размера, GitHub Actions, README, CLAUDE.md
 - [x] 7. Финальная проверка: сборка, тесты, офлайн, 360px, обе темы
-- [ ] 8. Деплой на GitHub Pages — нужны действия владельца (репозиторий на GitHub)
+- [x] 8. Деплой: https://github.com/y71346503-cmd/physlab → https://y71346503-cmd.github.io/physlab/ (CI зелёный, офлайн проверен на живом сайте скриптом scripts/check-live.mjs)
 
 ## Заметки
 

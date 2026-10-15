@@ -70,7 +70,7 @@ function TaskCard({ n, task, ctrl }: { n: number; task: TaskDef<any>; ctrl: Cont
           }}
         />
       )}
-      {task.kind === 'target' && <TargetBody task={task} ctrl={ctrl} onResult={(ok, fb) => (record(ok), setFeedback(fb))} />}
+      {task.kind === 'target' && <TargetBody task={task} ctrl={ctrl} tries={st.tries} onResult={(ok, fb) => (record(ok), setFeedback(fb))} />}
       {feedback && (
         <div class={`feedback ${feedback.ok ? 'ok' : 'bad'}`} role="status">
           <strong>{feedback.text}</strong>
@@ -162,7 +162,7 @@ function NumericBody({ task, expId, variant, onResult, onNewVariant }: { task: N
   );
 }
 
-function TargetBody({ task, ctrl, onResult }: { task: TargetTask<any>; ctrl: Controller; onResult: (ok: boolean, fb: Feedback) => void }) {
+function TargetBody({ task, ctrl, tries, onResult }: { task: TargetTask<any>; ctrl: Controller; tries: number; onResult: (ok: boolean, fb: Feedback) => void }) {
   return (
     <>
       <p>{task.prompt}</p>
@@ -171,7 +171,7 @@ function TargetBody({ task, ctrl, onResult }: { task: TargetTask<any>; ctrl: Con
         class="btn"
         onClick={() => {
           const r = task.check(ctrl.params, ctrl.sim);
-          onResult(r.ok, { ok: r.ok, text: r.ok ? 'Done: the setup meets the goal.' : r.message ?? 'Not yet: the setup does not meet the goal.', explain: r.ok ? task.explain : undefined });
+          onResult(r.ok, { ok: r.ok, text: r.ok ? 'Done: the setup meets the goal.' : r.message ?? 'Not yet: the setup does not meet the goal.', explain: r.ok ? task.explain : tries >= 1 ? `Hint: ${task.explain}` : undefined });
         }}
       >
         Check the simulation

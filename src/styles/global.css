@@ -329,6 +329,10 @@ main {
 
 .hero {
   padding: 18px 0 8px;
+  max-width: 1040px;
+}
+.hero h1,
+.hero p {
   max-width: 760px;
 }
 .hero h1 {
@@ -345,8 +349,8 @@ main {
 
 .features {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 10px 16px;
   margin: 18px 0 8px;
 }
 .feature {

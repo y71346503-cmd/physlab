@@ -61,6 +61,8 @@ export interface TextOpts {
   mono?: boolean;
   /** Draw a background plate for legibility over lines. */
   plate?: string;
+  /** Keep the text inside [0, clampW] horizontally. */
+  clampW?: number;
 }
 
 export function text(ctx: CanvasRenderingContext2D, s: string, x: number, y: number, o: TextOpts): void {
@@ -68,6 +70,13 @@ export function text(ctx: CanvasRenderingContext2D, s: string, x: number, y: num
   ctx.font = `${o.weight ?? 500} ${o.size ?? 12}px ${o.mono ? FONT_MONO : FONT_UI}`;
   ctx.textAlign = o.align ?? 'left';
   ctx.textBaseline = o.baseline ?? 'middle';
+  if (o.clampW) {
+    const tw = ctx.measureText(s).width;
+    const a = ctx.textAlign;
+    const left = a === 'center' ? x - tw / 2 : a === 'right' || a === 'end' ? x - tw : x;
+    const shift = left < 4 ? 4 - left : left + tw > o.clampW - 4 ? o.clampW - 4 - (left + tw) : 0;
+    x += shift;
+  }
   if (o.plate) {
     const m = ctx.measureText(s);
     const size = o.size ?? 12;

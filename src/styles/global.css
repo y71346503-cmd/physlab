@@ -745,7 +745,7 @@ select.select {
 /* Readouts */
 .readouts {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(136px, 1fr));
   gap: 8px;
 }
 .readout {
@@ -925,6 +925,16 @@ select.select {
 }
 .katex {
   font-size: 1.08em;
+}
+/* Hide the MathML copy even before the lazy KaTeX stylesheet arrives. */
+.katex .katex-mathml {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  border: 0;
+  padding: 0;
 }
 
 /* Tasks */

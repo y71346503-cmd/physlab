@@ -18,7 +18,8 @@ for (const a of rest) {
 }
 await page.waitForTimeout(400);
 const name = `${hash.replace(/[^a-z0-9]+/gi, '_')}_${width}_${theme}.png`;
-await page.screenshot({ path: `${outDir}/${name}`, fullPage: true });
+if (process.env.SHOT_EL) await page.locator(process.env.SHOT_EL).first().screenshot({ path: `${outDir}/el_${name}` });
+else await page.screenshot({ path: `${outDir}/${name}`, fullPage: true });
 const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
 console.log(JSON.stringify({ shot: name, overflowX: overflow, errors }));
 await browser.close();

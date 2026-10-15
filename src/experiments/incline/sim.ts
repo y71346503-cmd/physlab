@@ -137,6 +137,7 @@ export class InclineSim implements SimInstance {
       mono: true,
       weight: 600,
       plate: pal.bg,
+      clampW: w,
     });
 
     // Block
@@ -160,14 +161,14 @@ export class InclineSim implements SimInstance {
     line(ctx, cx, cy, cx + u.x * this.f.along * k, cy + u.y * this.f.along * k, pal.muted, 1.2, [4, 3]);
     line(ctx, cx, cy, cx - n.x * this.f.into * k, cy - n.y * this.f.into * k, pal.muted, 1.2, [4, 3]);
     arrow(ctx, cx, cy, cx, cy + this.f.weight * k, { color: pal.ink, width: 2.2 });
-    text(ctx, num('mg', this.f.weight), cx + 8, cy + this.f.weight * k + 4, { color: pal.ink, size: 12, mono: true, plate: pal.bg });
+    text(ctx, num('mg', this.f.weight), cx + 8, cy + this.f.weight * k + 4, { color: pal.ink, size: 12, mono: true, plate: pal.bg, clampW: w });
     arrow(ctx, cx, cy, cx + n.x * this.f.normal * k, cy + n.y * this.f.normal * k, { color: pal.blue, width: 2.2 });
-    text(ctx, num('N', this.f.normal), cx + n.x * this.f.normal * k + 6, cy + n.y * this.f.normal * k - 6, { color: pal.blue, size: 12, mono: true, plate: pal.bg });
+    text(ctx, num('N', this.f.normal), cx + n.x * this.f.normal * k + 6, cy + n.y * this.f.normal * k - 6, { color: pal.blue, size: 12, mono: true, plate: pal.bg, clampW: w });
     if (this.f.friction > 1e-9) {
       const fx = cx - u.x * this.f.friction * k;
       const fy = cy - u.y * this.f.friction * k;
       arrow(ctx, cx, cy, fx, fy, { color: pal.red, width: 2.2 });
-      text(ctx, num(this.f.moves ? 'F fr' : 'F fr (static)', this.f.friction), fx - 6, fy - 10, { color: pal.red, size: 12, mono: true, align: 'right', plate: pal.bg });
+      text(ctx, num(this.f.moves ? 'F fr' : 'F fr (static)', this.f.friction), fx - 6, fy - 10, { color: pal.red, size: 12, mono: true, align: 'right', plate: pal.bg, clampW: w });
     }
 
     text(ctx, this.hidden ? `μ = ? · ${SURFACES[this.params.surface!]!.label}` : `μ = ${fmt(this.phys.mu, 2)} · g = 9.81 m/s²`, 12, 16, { color: pal.muted, size: 12, mono: true });
